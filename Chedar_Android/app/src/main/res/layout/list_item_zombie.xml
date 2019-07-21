@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="zombie"
+            type="com.example.chedar.database.Zombie" />
+
+        <variable
+            name="clickListener"
+            type="com.example.chedar.zombietracker.ZombieAdapter.ZombieListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:onClick="@{() -> clickListener.onClick(zombie)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:gravity="bottom"
+            android:textColor="#de000000"
+            android:textSize="16sp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            app:accountWithThreadLevel="@{zombie}"
+            app:layout_constraintEnd_toStartOf="@+id/delete_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Facebook account" />
+
+        <TextView
+            android:id="@+id/timestamp_text"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            app:createdDateFormatted="@{zombie}"
+            android:textColor="#99000000"
+            android:textSize="14sp"
+            android:gravity="bottom"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/delete_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_text"
+            tools:text="12. 2. 2017" />
+
+        <!--android:onClick="@{() -> clickListener.onDelete(zombie)}"-->
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="16dp"
+            android:background="?android:selectableItemBackground"            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_black_24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
